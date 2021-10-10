@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     private const string WALK_ANIMATION = "Walk";
     private const string GROUND_TAG = "Ground";
 
+    private const string ENEMY_TAG = "Enemy";
+
     private void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
@@ -75,9 +77,21 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag(GROUND_TAG))
+        if (other.gameObject.CompareTag(GROUND_TAG))
         {
             isGrounded = true;
+        }
+        if (other.gameObject.CompareTag(ENEMY_TAG))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag(ENEMY_TAG))
+        {
+            Destroy(gameObject);
         }
     }
 }
