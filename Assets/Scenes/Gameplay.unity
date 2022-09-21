@@ -4971,7 +4971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minX: -60
-  maxX: 60
+  maxX: 320
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
