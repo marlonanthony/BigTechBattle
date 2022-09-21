@@ -39,15 +39,21 @@ public class MonsterSpawner : MonoBehaviour
             if (randomSide == 0)
             {
                 // left side
-                spawnedMonster.transform.position = leftPos.position;
                 spawnedMonster.GetComponent<Monster>().speed = Random.Range(4, 10);
+                if (randomIndex == 3 || randomIndex == 4) spawnedMonster.transform.localScale = new Vector3(.5f, .5f, 1f);
+                if (randomIndex == 3) spawnedMonster.transform.localPosition = new Vector3(leftPos.position.x, 3f, 1f);
+                else if (randomIndex == 5) spawnedMonster.transform.localPosition = new Vector3(leftPos.position.x, Random.Range(-3f, 3f), 1f);
+                else spawnedMonster.transform.position = leftPos.position;
             }
             else
             {
                 // right side
-                spawnedMonster.transform.position = rightPos.position;
                 spawnedMonster.GetComponent<Monster>().speed = -Random.Range(4, 10);
-                spawnedMonster.transform.localScale = new Vector3(-1f, 1f, 1f);
+                if (randomIndex == 3 || randomIndex == 4) spawnedMonster.transform.localScale = new Vector3(-.5f, .5f, 1f);
+                else spawnedMonster.transform.localScale = new Vector3(-1f, 1f, 1f);
+                if (randomIndex == 3) spawnedMonster.transform.localPosition = new Vector3(rightPos.position.x, 3f, 1f);
+                else if (randomIndex == 5) spawnedMonster.transform.localPosition = new Vector3(rightPos.position.x, Random.Range(-3f, 3f), 1f);
+                else spawnedMonster.transform.position = rightPos.position;
             }
         }
     }
