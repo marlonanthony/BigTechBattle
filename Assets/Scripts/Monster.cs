@@ -6,10 +6,11 @@ public class Monster : MonoBehaviour
 {
     [HideInInspector]
     public float speed;
-
     private Rigidbody2D myBody;
     private Transform player;
     private Animator anim;
+    [SerializeField]
+    private GameObject amazonPackage;
 
     void Awake()
     {
@@ -25,9 +26,16 @@ public class Monster : MonoBehaviour
     private void Update()
     {
         if (player &&
+            // if amazon drone is within 5px of player 
             myBody.transform.position.x < player.position.x + 5 &&
-            myBody.transform.position.x > player.position.x - 5
-            ) anim.SetBool("IsEmpty", true);
+            myBody.transform.position.x > player.position.x - 5 &&
+            !anim.GetBool("IsEmpty"))
+        {
+            // transition to empty animation state and render explosive
+            anim.SetBool("IsEmpty", true);
+            amazonPackage = Instantiate(amazonPackage);
+            amazonPackage.transform.localPosition = new Vector3(myBody.transform.position.x, -2.7f, 1f);
+        }
     }
 
     void FixedUpdate()

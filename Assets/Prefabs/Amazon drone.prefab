@@ -155,3 +155,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  amazonPackage: {fileID: 8444069046755054410, guid: 31ffe0dea69d1ac468d8b1c4c197f5f1, type: 3}

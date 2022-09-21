@@ -13,6 +13,8 @@ public class MonsterSpawner : MonoBehaviour
 
     private GameObject spawnedMonster;
     private int randomIndex, randomSide;
+    private Transform player;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class MonsterSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player = GameObject.FindWithTag("Player").transform;
 
     }
 
@@ -51,9 +54,9 @@ public class MonsterSpawner : MonoBehaviour
                 spawnedMonster.GetComponent<Monster>().speed = -Random.Range(4, 10);
                 if (randomIndex == 3 || randomIndex == 4) spawnedMonster.transform.localScale = new Vector3(-.5f, .5f, 1f);
                 else spawnedMonster.transform.localScale = new Vector3(-1f, 1f, 1f);
-                if (randomIndex == 3) spawnedMonster.transform.localPosition = new Vector3(rightPos.position.x, 3f, 1f);
-                else if (randomIndex == 5) spawnedMonster.transform.localPosition = new Vector3(rightPos.position.x, Random.Range(-3f, 3f), 1f);
-                else spawnedMonster.transform.position = rightPos.position;
+                if (randomIndex == 3) spawnedMonster.transform.localPosition = new Vector3(player.position.x + 10f, 3f, 1f);
+                else if (randomIndex == 5) spawnedMonster.transform.localPosition = new Vector3(player.position.x + 10f, Random.Range(-3f, 3f), 1f);
+                else spawnedMonster.transform.localPosition = new Vector3(player.position.x + 10f, -2.5f, 1f);
             }
         }
     }
