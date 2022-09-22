@@ -45,6 +45,19 @@ public class MonsterSpawner : MonoBehaviour
                 float leftStartingPosition = player.position.x - 10f;
                 switch (randomIndex)
                 {
+                    case 0:
+                    // TwitterBird
+                        {
+                            spawnedMonster.transform.localPosition = new Vector3(leftStartingPosition, Random.Range(-3f, 3f), 1f);
+                            break;
+                        }
+                    case 2:
+                    // AmazonDrone
+                        {
+                            spawnedMonster.transform.localScale = new Vector3(.5f, .5f, 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(leftStartingPosition, 3f, 1f);
+                            break;
+                        }
                     // AmazonDrone
                     case 3:
                         {
@@ -69,7 +82,7 @@ public class MonsterSpawner : MonoBehaviour
                     case 7:
                         {
                             spawnedMonster.transform.localScale = new Vector3(-.5f, .5f, 1f);
-                            spawnedMonster.transform.localPosition = new Vector3(leftStartingPosition, -2.9f, 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(leftStartingPosition - 5f, -2.9f, 1f);
                             break;
                         }
                     default:
@@ -88,6 +101,20 @@ public class MonsterSpawner : MonoBehaviour
                 float rightStartingPosition = player.position.x + 10f;
                 switch (randomIndex)
                 {
+                    case 0:
+                    // TwitterBird
+                        {
+                            spawnedMonster.transform.localScale = new Vector3(-1f, 1f, 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(rightStartingPosition, Random.Range(-3f, 3f), 1f);
+                            break;
+                        }
+                    // AmazonDrone
+                    case 2:
+                        {
+                            spawnedMonster.transform.localScale = new Vector3(-.5f, .5f, 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(rightStartingPosition, 3f, 1f);
+                            break;
+                        }
                     // AmazonDrone
                     case 3:
                         {
@@ -119,7 +146,6 @@ public class MonsterSpawner : MonoBehaviour
                     default:
                         {
                             spawnedMonster.transform.localScale = new Vector3(-1f, 1f, 1f);
-                            // Spawn monsters from just outside the rightside of the camera instead of end of map. 
                             spawnedMonster.transform.localPosition = new Vector3(rightStartingPosition, -2.9f, 1f);
                             break;
                         }
