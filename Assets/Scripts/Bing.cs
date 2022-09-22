@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Bing : MonoBehaviour
 {
-    public GameObject bing;
-    public GameObject player;
-    public float positionX;
+    private GameObject player;
+    private float positionX;
     private Animator anim;
 
     private void Awake()
@@ -23,10 +22,10 @@ public class Bing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetBingDirection();
+        SetDirection();
     }
 
-    void SetBingDirection()
+    void SetDirection()
     {
         if (positionX < transform.position.x) transform.position += new Vector3(3f, 0f, 0f) * Time.deltaTime * 6f;
         else transform.position -= new Vector3(3f, 0f, 0f) * Time.deltaTime * 6f;

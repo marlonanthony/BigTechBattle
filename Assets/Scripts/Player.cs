@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private float jumpForce = 11f;
     [SerializeField]
     private GameObject Bing;
+    [SerializeField]
+    private GameObject AzureCloud;
     private Rigidbody2D myBody;
     private Animator anim;
     private SpriteRenderer sr;
@@ -18,7 +20,8 @@ public class Player : MonoBehaviour
     private const string WALK_ANIMATION = "Walk";
     private const string GROUND_TAG = "Ground";
     private const string ENEMY_TAG = "Enemy";
-    private int ammo = 10;
+    private int bingAmmo = 10;
+    private int rainCloudAmmo = 5;
 
     private void Awake()
     {
@@ -27,29 +30,24 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         PlayerMoveKeyboard();
         PlayerJump();
         AnimatePlayer();
-        PlayerFire();
+        FireBing();
+        BringForthDeluge();
     }
 
-    void PlayerMoveKeyboard()
+    private void PlayerMoveKeyboard()
     {
         // -1, 0, or 1
         movementX = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(movementX, 0f, 0f) * Time.deltaTime * moveForce;
     }
 
-    void AnimatePlayer()
+    private void AnimatePlayer()
     {
         if (movementX > 0)
         {
@@ -66,18 +64,28 @@ public class Player : MonoBehaviour
             anim.SetBool(WALK_ANIMATION, false);
         }
     }
-    void PlayerFire()
+
+    private void FireBing()
     {
-        if (Input.GetButtonDown("Fire1") && ammo > 0)
+        if (Input.GetButtonDown("Fire1") && bingAmmo > 0)
         {
-            ammo--;
+            bingAmmo--;
             movementX = Input.GetAxisRaw("Horizontal");
             if (movementX > 0) Instantiate(Bing, new Vector3(transform.position.x + 3f, transform.position.y, transform.position.z), transform.rotation);
             else Instantiate(Bing, new Vector3(transform.position.x - 3f, transform.position.y, transform.position.z), transform.rotation);
         }
     }
 
-    void PlayerJump()
+    private void BringForthDeluge()
+    {
+        if (Input.GetButtonDown("Fire2") && rainCloudAmmo > 0)
+        {
+            Instantiate(AzureCloud, new Vector3(transform.position.x, 3f, transform.position.z), transform.rotation);
+            rainCloudAmmo--;
+        }
+    }
+    
+    private void PlayerJump()
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
