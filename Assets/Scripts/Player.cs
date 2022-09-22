@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private GameObject Bing;
     [SerializeField]
     private GameObject AzureCloud;
+    [SerializeField]
+    private GameObject BingPlatform;
     private Rigidbody2D myBody;
     private Animator anim;
     private SpriteRenderer sr;
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
         AnimatePlayer();
         FireBing();
         BringForthDeluge();
+        PlatformMaker();
     }
 
     private void PlayerMoveKeyboard()
@@ -82,6 +85,16 @@ public class Player : MonoBehaviour
         {
             Instantiate(AzureCloud, new Vector3(transform.position.x, 3f, transform.position.z), transform.rotation);
             rainCloudAmmo--;
+        }
+    }
+
+    private void PlatformMaker()
+    {
+        if (Input.GetButtonDown("Fire3"))
+        {
+            movementX = Input.GetAxisRaw("Horizontal");
+            if (movementX > 0) Instantiate(BingPlatform, new Vector3(transform.position.x + 3f, transform.position.y, transform.position.z), transform.rotation);
+            else Instantiate(BingPlatform, new Vector3(transform.position.x - 3f, transform.position.y, transform.position.z), transform.rotation);
         }
     }
     
