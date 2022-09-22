@@ -29,15 +29,15 @@ public class AzureCloud : MonoBehaviour
     {
         while (true)
         {
-            Instantiate(rain, new Vector3(transform.position.x, 2.7f, transform.position.z), transform.rotation);
-            Instantiate(rain, new Vector3(transform.position.x - 2f, 2.7f, transform.position.z), transform.rotation);
-            Instantiate(rain, new Vector3(transform.position.x + 2f, 2.7f, transform.position.z), transform.rotation);
             Instantiate(rain, new Vector3(transform.position.x - 5f, 2.7f, transform.position.z), transform.rotation);
             Instantiate(rain, new Vector3(transform.position.x - 4f, 2.7f, transform.position.z), transform.rotation);
             Instantiate(rain, new Vector3(transform.position.x - 3f, 2.7f, transform.position.z), transform.rotation);
-            Instantiate(rain, new Vector3(transform.position.x + 5f, 2.7f, transform.position.z), transform.rotation);
-            Instantiate(rain, new Vector3(transform.position.x + 4f, 2.7f, transform.position.z), transform.rotation);
+            Instantiate(rain, new Vector3(transform.position.x - 2f, 2.7f, transform.position.z), transform.rotation);
+            Instantiate(rain, new Vector3(transform.position.x, 2.7f, transform.position.z), transform.rotation);
+            Instantiate(rain, new Vector3(transform.position.x + 2f, 2.7f, transform.position.z), transform.rotation);
             Instantiate(rain, new Vector3(transform.position.x + 3f, 2.7f, transform.position.z), transform.rotation);
+            Instantiate(rain, new Vector3(transform.position.x + 4f, 2.7f, transform.position.z), transform.rotation);
+            Instantiate(rain, new Vector3(transform.position.x + 5f, 2.7f, transform.position.z), transform.rotation);
             yield return new WaitForSeconds(1);
 
         }
