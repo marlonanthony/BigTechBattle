@@ -52820,9 +52820,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterReference:
-  - {fileID: 8309709691888090842, guid: dab11c8db01c0344fb9384ca07f92cd0, type: 3}
-  - {fileID: 2566306900870842959, guid: 451cbd4c53caecd47a3c937c16b2214e, type: 3}
-  - {fileID: 7115304879317453277, guid: abed2421b88fa7c43808cf416aa32e28, type: 3}
+  - {fileID: 2807341968735796714, guid: 64bec2ac796e21e419d337ad7e36a2e8, type: 3}
+  - {fileID: 5326877966762635762, guid: 16c2b023b0082b941ad6a2f37c495415, type: 3}
+  - {fileID: 5662870228904065613, guid: 4bbace67e0711f24e914d0ce6e9d771f, type: 3}
   - {fileID: 5662870228904065613, guid: 4bbace67e0711f24e914d0ce6e9d771f, type: 3}
   - {fileID: 1834234065518003683, guid: 76d03ba893f083d44a72cc4a73848745, type: 3}
   - {fileID: 2807341968735796714, guid: 64bec2ac796e21e419d337ad7e36a2e8, type: 3}
