@@ -26,7 +26,7 @@ public class MonsterSpawner : MonoBehaviour
     void Update()
     {
         player = GameObject.FindWithTag("Player").transform;
-
+        if (!player) StopCoroutine(SpawnMonsters());
     }
 
     IEnumerator SpawnMonsters()
@@ -42,38 +42,40 @@ public class MonsterSpawner : MonoBehaviour
             {
                 // left side
                 spawnedMonster.GetComponent<Monster>().speed = Random.Range(4, 10);
+                float leftStartingPosition = player.position.x - 10f;
                 switch (randomIndex)
                 {
                     // AmazonDrone
                     case 3:
                         {
                             spawnedMonster.transform.localScale = new Vector3(.5f, .5f, 1f);
-                            spawnedMonster.transform.localPosition = new Vector3(leftPos.position.x, 3f, 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(leftStartingPosition, 3f, 1f);
                             break;
                         }
                     // iPhone
                     case 4:
                         {
                             spawnedMonster.transform.localScale = new Vector3(.5f, .5f, 1f);
-                            spawnedMonster.transform.localPosition = new Vector3(leftPos.position.x, -2.5f, 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(leftStartingPosition, -2.5f, 1f);
                             break;
                         }
                     // TwitterBird
                     case 5:
                         {
-                            spawnedMonster.transform.localPosition = new Vector3(leftPos.position.x, Random.Range(-3f, 3f), 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(leftStartingPosition, Random.Range(-3f, 3f), 1f);
                             break;
                         }
                     // TeslaCybertruck
                     case 7:
                         {
                             spawnedMonster.transform.localScale = new Vector3(-.5f, .5f, 1f);
-                            spawnedMonster.transform.localPosition = new Vector3(leftPos.position.x, -2.9f, 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(leftStartingPosition, -2.9f, 1f);
                             break;
                         }
                     default:
                         {
-                            spawnedMonster.transform.position = leftPos.position;
+                            // Spawn monsters from just outside the rightside of the camera instead of end of map. 
+                            spawnedMonster.transform.localPosition = new Vector3(leftStartingPosition, -2.9f, 1f);
                             break;
                         }
 
@@ -83,41 +85,42 @@ public class MonsterSpawner : MonoBehaviour
             {
                 // right side
                 spawnedMonster.GetComponent<Monster>().speed = -Random.Range(4, 10);
+                float rightStartingPosition = player.position.x + 10f;
                 switch (randomIndex)
                 {
                     // AmazonDrone
                     case 3:
                         {
                             spawnedMonster.transform.localScale = new Vector3(-.5f, .5f, 1f);
-                            spawnedMonster.transform.localPosition = new Vector3(player.position.x + 10f, 3f, 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(rightStartingPosition, 3f, 1f);
                             break;
                         }
                     // iPhone
                     case 4:
                         {
                             spawnedMonster.transform.localScale = new Vector3(-.5f, .5f, 1f);
-                            spawnedMonster.transform.localPosition = new Vector3(player.position.x + 10f, -2.5f, 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(rightStartingPosition, -2.5f, 1f);
                             break;
                         }
                     // TwitterBird
                     case 5:
                         {
                             spawnedMonster.transform.localScale = new Vector3(-1f, 1f, 1f);
-                            spawnedMonster.transform.localPosition = new Vector3(player.position.x + 10f, Random.Range(-3f, 3f), 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(rightStartingPosition, Random.Range(-3f, 3f), 1f);
                             break;
                         }
                     // TeslaCybertruck
                     case 7:
                         {
                             spawnedMonster.transform.localScale = new Vector3(.5f, .5f, 1f);
-                            spawnedMonster.transform.localPosition = new Vector3(player.position.x + 10f, -2.9f, 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(rightStartingPosition, -2.9f, 1f);
                             break;
                         }
                     default:
                         {
                             spawnedMonster.transform.localScale = new Vector3(-1f, 1f, 1f);
                             // Spawn monsters from just outside the rightside of the camera instead of end of map. 
-                            spawnedMonster.transform.localPosition = new Vector3(player.position.x + 10f, -2.9f, 1f);
+                            spawnedMonster.transform.localPosition = new Vector3(rightStartingPosition, -2.9f, 1f);
                             break;
                         }
                 }
