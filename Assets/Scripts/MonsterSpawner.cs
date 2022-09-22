@@ -26,7 +26,7 @@ public class MonsterSpawner : MonoBehaviour
     void Update()
     {
         player = GameObject.FindWithTag("Player").transform;
-
+        if (!player) StopCoroutine(SpawnMonsters());
     }
 
     IEnumerator SpawnMonsters()
