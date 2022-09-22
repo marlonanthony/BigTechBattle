@@ -6,19 +6,19 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private float moveForce = 10f;
-
     [SerializeField]
     private float jumpForce = 11f;
-
-    private float movementX;
+    [SerializeField]
+    private GameObject Bing;
     private Rigidbody2D myBody;
     private Animator anim;
     private SpriteRenderer sr;
     private bool isGrounded;
+    private float movementX;
     private const string WALK_ANIMATION = "Walk";
     private const string GROUND_TAG = "Ground";
-
     private const string ENEMY_TAG = "Enemy";
+    private int ammo = 10;
 
     private void Awake()
     {
@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
         PlayerMoveKeyboard();
         PlayerJump();
         AnimatePlayer();
+        PlayerFire();
     }
 
     void PlayerMoveKeyboard()
@@ -63,6 +64,16 @@ public class Player : MonoBehaviour
         else
         {
             anim.SetBool(WALK_ANIMATION, false);
+        }
+    }
+    void PlayerFire()
+    {
+        if (Input.GetButtonDown("Fire1") && ammo > 0)
+        {
+            ammo--;
+            movementX = Input.GetAxisRaw("Horizontal");
+            if (movementX > 0) Instantiate(Bing, new Vector3(transform.position.x + 3f, transform.position.y, transform.position.z), transform.rotation);
+            else Instantiate(Bing, new Vector3(transform.position.x - 3f, transform.position.y, transform.position.z), transform.rotation);
         }
     }
 

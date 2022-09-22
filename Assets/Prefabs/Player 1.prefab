@@ -156,3 +156,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 10
   jumpForce: 11
+  Bing: {fileID: 5518654670766349351, guid: 6b1a3e86f74593c43a8c28248c969a00, type: 3}
