@@ -156,3 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 10
   jumpForce: 11
+  Bing: {fileID: 5518654670766349351, guid: 6b1a3e86f74593c43a8c28248c969a00, type: 3}
+  AzureCloud: {fileID: 805816537761220324, guid: 8a9e831afa0c2994cb504599aa0ce474, type: 3}
+  BingPlatform: {fileID: 7085236426124080405, guid: 93c1e8173a42d1943835a72a23194c1c, type: 3}
