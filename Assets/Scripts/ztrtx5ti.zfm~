@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject BingPlatform;
 
+    [SerializeField]
+    private GameObject[] playerReference;
+
+    private GameObject femaleSprite;
+
     private Rigidbody2D myBody;
     private Animator anim;
     private SpriteRenderer sr;
@@ -25,13 +30,23 @@ public class Player : MonoBehaviour
     private const string ENEMY_TAG = "Enemy";
     private int bingAmmo = 10;
     private int rainCloudAmmo = 5;
+    private int femaleCharacterIndex = 0;
+
 
     private void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        femaleSprite = this.GetComponent<GameObject>();
+        femaleSprite = playerReference[femaleCharacterIndex];
     }
+
+/*    private void OnEnable()
+    {
+        currentPlayer = Instantiate(playerReference[femaleCharacterIndex]);
+        Debug.Log("Got em!!!");
+    }*/
 
     // Update is called once per frame
     private void Update()
@@ -51,37 +66,39 @@ public class Player : MonoBehaviour
         transform.position += new Vector3(movementX, 0f, 0f) * Time.deltaTime * moveForce;
     }
 
+/*    IEnumerator GetFemalePlayer()
+    {
+        Debug.Log("HEEEEEEEEEEEEREEE!");
+        currentPlayer = Instantiate(playerReference[femaleCharacterIndex]);
+        yield return currentPlayer;
+    }*/
+
     private void AnimatePlayer()
     {
         if (movementX > 0)
         {
             // female character sprite is facing the wrong way so flip boolean X value
-            if (gameObject.CompareTag("PlayerFemale"))
+            if(femaleSprite)
             {
                 Debug.Log("YOOO!");
                 anim.SetBool(WALK_ANIMATION, true);
                 sr.flipX = true;
-            } 
-            else
-            {
-                anim.SetBool(WALK_ANIMATION, true);
-                sr.flipX = false;
             }
 
-
+            anim.SetBool(WALK_ANIMATION, true);
+            sr.flipX = false;
         }
         else if (movementX < 0)
         {
-            if (gameObject.CompareTag("PlayerFemale"))
+            if (femaleSprite)
             {
+                Debug.Log("HEEEEEEEEEEEEREEE!");
                 anim.SetBool(WALK_ANIMATION, true);
                 sr.flipX = false;
             }
-            else
-            {
-                anim.SetBool(WALK_ANIMATION, true);
-                sr.flipX = true;
-            }
+
+            anim.SetBool(WALK_ANIMATION, true);
+            sr.flipX = true;
         }
         else
         {

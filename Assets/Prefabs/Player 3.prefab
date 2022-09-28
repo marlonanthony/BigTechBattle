@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8763977013869907024}
   m_Layer: 0
   m_Name: Player 3
-  m_TagString: Player
+  m_TagString: PlayerFemale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,3 +166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 10
   jumpForce: 11
+  Bing: {fileID: 0}
+  AzureCloud: {fileID: 0}
+  BingPlatform: {fileID: 0}
+  playerReference:
+  - {fileID: 2057715916947610317}

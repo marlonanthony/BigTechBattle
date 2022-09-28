@@ -462,6 +462,8 @@ MonoBehaviour:
   playerReference:
   - {fileID: 6529588286066131309, guid: 009f54a5f37b5f34186d34f1b9ed238a, type: 3}
   - {fileID: 809599097487670323, guid: 25ae9f187bb7a3147b7a74b373ba0df5, type: 3}
+  - {fileID: 2057715916947610317, guid: 41b06f0050c95f64fbc1d471f10206b5, type: 3}
+  - {fileID: 2085265367356927560, guid: 50ec75469e46e1849ad876874dd2c36b, type: 3}
 --- !u!4 &785379891
 Transform:
   m_ObjectHideFlags: 0
